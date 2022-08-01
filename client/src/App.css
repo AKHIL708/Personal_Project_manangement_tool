@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+  margin: 0%;
+  padding: 0%;
+}
+/* Editing of navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  height: 50px;
+  border-bottom: 1px solid black;
+  box-shadow: 2px 2px 5px black;
+}
+.navbar h1 {
+  margin-left: 10px;
+}
+.navbarElements a {
+  text-decoration: none;
+  color: black;
+  margin: 0px 5px;
+}
+.navbarElements a:hover {
+  text-shadow: 1px 1px 3px gray;
+  transition-duration: 0.2s;
+}
+
+/* mainPage Section Editing */
+
+.navbarContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: white;
+  box-shadow: 5px 5px 15px #dafcfc;
+  margin: 15px 20px;
+  height: 250px;
+  border-radius: 20px;
+  background-image: linear-gradient(to right, #1a2980, #26d0ce);
+  /* background-image: linear-gradient(to left , #F9E7FE , #DAFCFC);  */
+}
+
+.uploadContainer form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  /* border: 1px solid; */
+  margin: 0px 5px;
+  padding: 15px 20px;
+  /* border-radius: 25px ; */
+  box-shadow: 5px 5px 8px black;
+  background-image: linear-gradient(to right, #8e9eab, #eef2f3);
+}
+
+.uploadInputSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.uploadInputSection {
+  margin: 15px 25px;
+}
+.uploadInputSection input {
+  width: 270px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bolder;
+  color: black;
+  border: none;
+  background-color: transparent;
+  font-size: 15px;
+}
+.projectIcons {
+  width: auto;
+  height: 60px;
+  margin: 0px 10px;
+}
+.submitBtn {
+  background-color: green;
+  border: none;
+  padding: 5px 5px;
+  color: white;
+}
+/* 
+.sectionContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+} */
+.sections{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  
+}
+.sectionImg{
+  width: auto;
+  height: 200px;
+}
+.sectionHeading{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+ width: 550px;
+
+}
+/* project List Editing is here */
+
+.projectListContainer {
+  background-color: rgb(29, 161, 242);
+  padding: 5px 10px;
+  margin: 5px 15px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px;
+  width: 450px;
+}
+.projectListContainer a {
+  text-decoration: none;
+  color: black;
+}
+
+.projectSection {
+  display: flex;
+  flex-direction: column;
+  /* justify-content:flex-star; */
+  /* align-items:center ; */
+  text-align: left;
+}
+.projectSection h1 {
+  font-size: 15px;
+  text-decoration: underline;
+  margin-top: 5px;
+  color: white;
+  text-shadow: 2px 2px 4px black;
+}
+.projectSection p {
+  font-weight: bolder;
+  margin: 2px;
+}
+.projectSection a {
+  font-weight: bolder;
+  margin: 2px;
+}
+
+.ProjectListingComponent {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+}
+
+.deleteInput{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  margin: 5px 5px;
+}
+.deleteInputInput{
+  background-color:transparent;
+  border: 1px solid black;
+  margin: 0px 5px;
+  padding: 3px 5px;
+}
+.deleteBtn{
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 5px 5px ;
+  border-radius: 15px;
+}
