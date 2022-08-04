@@ -10,6 +10,7 @@ import ProjectList from "./ProjectList";
 
 export default function UploadData() {
   const [findingData, setFindingData] = useState("");
+  const [getData, setGetData] = useState("");
   const [listing, setListing] = useState([]);
 
   const [name, setName] = useState("");
@@ -29,18 +30,59 @@ export default function UploadData() {
   const [projectLink, setProjectLink] = useState("");
   const [projectDetails, setProjectDetails] = useState("");
 
-  const Submit = async () => {
-    const res = await fetch("/delete-item",{
-      method:"POST",
+  const [demo, setDemo] = useState([]);
+
+  const arrayDeleteFunction = ()=>{
+    // console.log(`first => ${listing}`)
+    let remainingData = listing.filter((data,index)=>{
+     let findingIndex = listing.findIndex((e)=>{
+       return e == index
+     })
+    console.log("one")
+    console.log(findingIndex)
+    console.log("two")
+    return data != findingIndex
+   })
+   setListing(remainingData)
+  //  console.log(`second output => ${listing}`)
+  }
+
+
+  const GetData = async (e) => {
+    e.preventDefault();
+
+    const GetData = await fetch("/getData", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body:JSON.stringify({
-        projectName : findingData
-      })
+      body: JSON.stringify({
+        gettingData: getData,
+      }),
     })
-    if(res){
-      window.alert("successfully delteed")
+      .then((res) => res.json())
+      .then((data) => setDemo(data));
+  };
+
+  const DeleteData = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch("/deleteItem", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        DeleteProjectName: findingData,
+      }),
+    });
+    if (!res) {
+      window.alert("already present");
+    } else {
+      toast.success("Deleting Successfully... ", {
+        position: "top-center",
+        autoClose: 800,
+      });
     }
   };
 
@@ -88,7 +130,8 @@ export default function UploadData() {
         setHeadingLink("ProjectLink");
         setHeadingDetails("Project-Details");
         setLink("Project-Link (tap)");
-        setListing((current) => [
+        setListing((current) => {
+          return  [
           ...current,
           <ProjectList
             projectname={name}
@@ -101,8 +144,10 @@ export default function UploadData() {
             headingLink={headingLink}
             headingDetails={headingDetails}
             Link={link}
+            arrayDeleteFunction={arrayDeleteFunction}
+            arrayListDeleteBtn={"Delete Data"}
           />,
-        ]);
+        ]});
         setProjectName("");
         setProjectLink("");
         setProjectDetails("");
@@ -110,8 +155,19 @@ export default function UploadData() {
       }, 4000);
     }
   };
+  const [akhil , setAkhil ] = useState("akhil" + "Nayak")
   return (
     <>
+    <h1>{akhil}</h1>
+      <div>
+        {demo.map((data, index) => {
+          console.log(data._id);
+     if(Math.random() > 0.5){
+     return  setAkhil(data.projectName)
+     }
+      //  return    <div key={index}>{data.projectName}</div>;
+        })}
+      </div>
       <h1
         style={{
           display: "flex",
@@ -173,16 +229,30 @@ export default function UploadData() {
         </form>
         <ToastContainer />
       </div>
-      <form method="POST" className="deleteInput">
-        <h1>Enter Project Name To Delete : </h1>
-        <input
-          type="text"
-          className="deleteInputInput"
-          value={findingData}
-          onChange={(e) => setFindingData(e.target.value)}
-        />
-        <input className="deleteBtn" type="submit" onClick={Submit} />
-      </form>
+      <div className="dataContaiiner">
+        <form method="POST" className="deleteInput">
+          <h1>Enter Project Name To Delete : </h1>
+          <input
+            type="text"
+            className="deleteInputInput"
+            value={findingData}
+            onChange={(e) => setFindingData(e.target.value)}
+          />
+          <input className="deleteBtn" type="submit" onClick={DeleteData} />
+        </form>
+
+        <form method="POST">
+          <h1>Get Project Details : </h1>
+          <input
+            type="text"
+            className="deleteInputInput"
+            value={getData}
+            onChange={(e) => setGetData(e.target.value)}
+          />
+          <input type="submit" onClick={GetData} />
+        </form>
+      </div>
+
       <h1 style={{ color: "green" }}>Your Projects</h1>
 
       <div className="ProjectListingComponent">

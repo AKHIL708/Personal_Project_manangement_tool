@@ -27,6 +27,7 @@ export default function ProjectList(props) {
           <h1>{props.headingDetails}</h1>
           <p>{props.projectDetails}</p>
         </div>
+        <button onClick={props.arrayDeleteFunction}>{props.arrayListDeleteBtn}</button>
       </div>
     </>
   );
